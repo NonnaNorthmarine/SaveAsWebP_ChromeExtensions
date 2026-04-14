@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>画質設定</title>
+  <style>
+    :root {
+      --primary: #5c6ac4;
+      --bg: #1a1b26;
+      --bg-panel: #24283b;
+      --text: #a9b1d6;
+      --text-highlight: #ffffff;
+      --slider-bg: #414868;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 250px;
+      user-select: none;
+    }
+    .container {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      margin: 0 0 16px 0;
+      font-size: 15px;
+      color: var(--text-highlight);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .panel {
+      background-color: var(--bg-panel);
+      width: 100%;
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .value-display {
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+      margin: 10px 0;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: var(--text-highlight);
+      cursor: pointer;
+      margin-top: -10px;
+      box-shadow: 0 0 10px var(--primary);
+      border: 3px solid var(--primary);
+      transition: transform 0.1s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:active {
+      transform: scale(1.1);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4px;
+      cursor: pointer;
+      background: var(--slider-bg);
+      border-radius: 2px;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    .footer {
+      font-size: 11px;
+      color: #565f89;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>WebP 画質設定</h2>
+    <div class="panel">
+      <div class="value-display" id="qualityValue">80%</div>
+      <input type="range" id="qualitySlider" min="1" max="100" value="80" title="WebPの圧縮品質">
+    </div>
+    <div class="footer">
+      画質は画像変換時に自動で適用されます
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
